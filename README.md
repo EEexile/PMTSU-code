@@ -16,7 +16,18 @@ This project is the official open-source implementation of the paper *“Adaptiv
 
 📄 Code Structure  
 IEMOCAP Experiments  
-The `IEMOCAP_exp` directory contains experiments on the IEMOCAP dataset, where 5,531 utterances are used for 4-class emotion classification (anger, happiness + excited, neutral, sadness). A 5-fold cross-validation strategy is used for training.  
+The `IEMOCAP` directory contains experiments on the IEMOCAP dataset, where 5,531 utterances are used for 4-class emotion classification (anger, happiness + excited, neutral, sadness). A 5-fold cross-validation strategy is used for training.  
+
+📥 Pre-trained Encoder  
+To run the experiments, please download the pre-trained speech encoder and place it under `model/`. The exact checkpoint should match the one specified in your configuration file.
+
+🔧 Feature Extraction  
+The `scripts/` directory contains utility scripts for **label processing** and **feature extraction**, which generate the inputs stored in `feats/`.
+
+🧠 Model Variants  
+Two variants of our PMTSU framework are supported:  
+- **`pmtsu-c`**: Uses **continuous VAD dimensions** as the auxiliary task supervision.  
+- **`pmtsu-d`**: Uses **discretized VAD labels** as the auxiliary task supervision.  
 
 `config/config.yml`: Configuration file for the experiments.  
 `mult-task.py`: Main program for running experiments.  
@@ -24,13 +35,3 @@ The `IEMOCAP_exp` directory contains experiments on the IEMOCAP dataset, where 5
 `model.py`: File containing the model definition.  
 `output/`: Directory for storing experimental result logs.
 
-📥 Pre-trained Encoder  
-To run the experiments, please download the pre-trained speech encoder and place it under `model/`. The exact checkpoint should match the one specified in your configuration file.
-
-🔧 Feature Extraction  
-The `scripts/` directory contains utility scripts for feature extraction. These scripts are used to generate the inputs stored in `feats/`.
-
-🧠 Model Variants  
-Two variants of our PMTSU framework are supported:  
-- **`pmtsu-c`**: Uses **continuous VAD dimensions** as the auxiliary task supervision.  
-- **`pmtsu-d`**: Uses **discretized VAD labels** as the auxiliary task supervision.  
